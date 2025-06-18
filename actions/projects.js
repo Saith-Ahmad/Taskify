@@ -4,13 +4,19 @@ import { db } from "@/lib/prisma";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 
 export async function createProject(data) {
-  const { userId, orgId } = auth();
+  const { userId } = await auth();
+  
+  let orgId = null;
+   await clerkClient().organizations.getOrganizationMembershipList({
+      organizationId: orgId,
+    });
 
   if (!userId) {
     throw new Error("Unauthorized");
   }
 
   if (!orgId) {
+    console.log("org id is not here");
     throw new Error("No Organization Selected");
   }
 

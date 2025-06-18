@@ -16,7 +16,7 @@ import OrgSwitcher from "@/components/org-switcher";
 
 export default function CreateProjectPage() {
   const router = useRouter();
-  const { isLoaded: isOrgLoaded, membership } = useOrganization();
+  const { isLoaded: isOrgLoaded, membership, organization } = useOrganization();
   const { isLoaded: isUserLoaded } = useUser();
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -30,6 +30,7 @@ export default function CreateProjectPage() {
 
   useEffect(() => {
     if (isOrgLoaded && isUserLoaded && membership) {
+      console.log("membership", membership);
       setIsAdmin(membership.role === "org:admin");
     }
   }, [isOrgLoaded, isUserLoaded, membership]);
@@ -47,7 +48,10 @@ export default function CreateProjectPage() {
       return;
     }
 
-    createProjectFn(data);
+    console.log("data===========", data)
+    // createProjectFn(data);
+    createProjectFn({ ...data, organizationId: organization?.id });
+
   };
 
   useEffect(() => {
