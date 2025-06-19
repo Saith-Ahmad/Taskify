@@ -1,7 +1,7 @@
 import { getProject } from "@/actions/projects";
 import { notFound } from "next/navigation";
-import SprintCreationForm from "../_components/create-sprint";
-import SprintBoard from "../_components/sprint-board";
+import SprintCreationForm from "../_components/create-todos";
+import SprintBoard from "../_components/comments_projects";
 
 export default async function ProjectPage({ params }) {
   const { projectId } = params;
