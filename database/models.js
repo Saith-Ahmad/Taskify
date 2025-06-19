@@ -2,6 +2,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+
+
 // USER MODEL
 const UserSchema = new Schema({
   name: { type: String, required: true },
@@ -11,6 +13,9 @@ const UserSchema = new Schema({
 }, { timestamps: true });
 
 const User = mongoose.model('User', UserSchema);
+
+
+
 
 // PROJECT MODEL
 const ProjectSchema = new Schema({
@@ -25,6 +30,10 @@ const ProjectSchema = new Schema({
 
 const Project = mongoose.model('Project', ProjectSchema);
 
+
+
+
+
 // EVENT MODEL
 const EventSchema = new Schema({
   projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
@@ -36,6 +45,11 @@ const EventSchema = new Schema({
 
 const Event = mongoose.model('Event', EventSchema);
 
+
+
+
+
+
 // TODO MODEL
 const TodoSchema = new Schema({
   projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
@@ -43,9 +57,14 @@ const TodoSchema = new Schema({
   assignees: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   startDate: { type: Date },
   endDate: { type: Date },
-  permissions: { type: String }, // Could be refined to a role/enum if needed
+  permissions: { type: String },
   description: { type: String },
 }, { timestamps: true });
+
+
+
+
+
 
 const Todo = mongoose.model('Todo', TodoSchema);
 

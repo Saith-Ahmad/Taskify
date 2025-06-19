@@ -12,7 +12,7 @@ import statuses from "@/data/status";
 import { getIssuesForSprint, updateIssueOrder } from "@/actions/issues";
 
 import SprintManager from "./sprint-manager";
-import IssueCreationDrawer from "./create-issue";
+import IssueCreationDrawer from "./create-project";
 import IssueCard from "@/components/issue-card";
 import BoardFilters from "./board-filters";
 
